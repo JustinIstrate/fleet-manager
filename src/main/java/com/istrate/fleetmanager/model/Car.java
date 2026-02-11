@@ -18,4 +18,5 @@ public class Car {
     @Column(name = "production_year")
     private int year;
     private String licensePlate;
+    private double mileage;
 }
