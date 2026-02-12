@@ -1,5 +1,6 @@
 package com.istrate.fleetmanager.controller;
 
+import com.istrate.fleetmanager.dto.CarExpenseDTO;
 import com.istrate.fleetmanager.model.Car;
 import com.istrate.fleetmanager.service.CarService;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +32,9 @@ public class CarController {
     @DeleteMapping("/{id}")
     public void deleteCar(@PathVariable Long id) {
         carService.deleteCar(id);
+    }
+    @GetMapping("/top-expensive")
+    public List<CarExpenseDTO> getTopExpensiveCars() {
+        return carService.getTopThreeExpensiveCars();
     }
 }

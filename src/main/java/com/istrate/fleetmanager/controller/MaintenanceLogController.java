@@ -25,4 +25,9 @@ public class MaintenanceLogController {
     public List<MaintenanceLog> getLogs(@PathVariable Long carId){
         return maintenanceLogService.getLogsByCarId(carId);
     }
+
+    @GetMapping("/total/{carId}")
+    public Double getTotalCost(@PathVariable Long carId){
+        return maintenanceLogService.calculateTotalCost(carId);
+    }
 }

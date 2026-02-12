@@ -1,4 +1,5 @@
 package com.istrate.fleetmanager.service;
+import com.istrate.fleetmanager.dto.CarExpenseDTO;
 import com.istrate.fleetmanager.model.Car;
 import com.istrate.fleetmanager.repository.CarRepository;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,9 @@ public class CarService {
                     return carRepository.save(car);
                 })
                 .orElseThrow(() -> new RuntimeException("Car not found with id " + id));
+    }
+    public List<CarExpenseDTO> getTopThreeExpensiveCars() {
+        List<CarExpenseDTO> allExpenses= carRepository.findTopExpensiveCars();
+        return allExpenses.stream().limit(3).toList();
     }
 }

@@ -28,4 +28,8 @@ public class MaintenanceLogService {
     public List<MaintenanceLog> getLogsByCarId(Long carId){
         return maintenanceLogRepository.findByCarId(carId);
     }
+    public Double calculateTotalCost(Long carId){
+        Double total = maintenanceLogRepository.getTotalCostByCarId(carId);
+        return (total != null) ? total : 0.0;
+    }
 }
