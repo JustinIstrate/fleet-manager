@@ -3,6 +3,7 @@ package com.istrate.fleetmanager.controller;
 import com.istrate.fleetmanager.dto.CarExpenseDTO;
 import com.istrate.fleetmanager.model.Car;
 import com.istrate.fleetmanager.service.CarService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class CarController {
         return carService.getAllCars();
     }
     @PostMapping
-    public Car addCar(@RequestBody Car car) {
+    public Car addCar(@Valid @RequestBody Car car) {
         return carService.addCar(car);
     }
     @PutMapping("/{id}")
