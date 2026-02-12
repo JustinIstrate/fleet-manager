@@ -44,7 +44,7 @@ public class DataSeeder implements CommandLineRunner {
                 car.setYear(faker.number().numberBetween(2010,2025));
                 car.setLicensePlate(faker.expression(randomCounty+" "+digits+" "+letters));
                 car.setMileage(faker.number().randomDouble(2,10000,500000));
-
+                car.setItpExpiryDate(LocalDate.now().plusDays(faker.random().nextInt(1,730)));
                 carRepository.save(car);
 
                 int logsCount = faker.number().numberBetween(0,6);

@@ -7,6 +7,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
 import java.util.List;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "cars")
@@ -38,4 +39,6 @@ public class Car {
 
     @Column(nullable = false)
     private boolean deleted=false;
+
+    private LocalDate itpExpiryDate;
 }
