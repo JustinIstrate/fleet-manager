@@ -16,6 +16,8 @@ public class CarService {
     public List<Car> getAllCars() {
         return carRepository.findAll();
     }
+    public Car getCarById(Long id) { return carRepository.findById(id)
+            .orElseThrow(() -> new jakarta.persistence.EntityNotFoundException("The car with id: " + id + " was not found")); }
     public Car addCar(Car car) {
         return carRepository.save(car);
     }
