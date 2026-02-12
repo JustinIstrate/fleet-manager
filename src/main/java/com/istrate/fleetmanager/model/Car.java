@@ -3,6 +3,8 @@ package com.istrate.fleetmanager.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
 
 import java.util.List;
 
@@ -11,6 +13,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@SQLDelete(sql="UPDATE cars SET deleted=true WHERE id=?")
+@SQLRestriction("deleted=false")
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,4 +35,7 @@ public class Car {
     private String licensePlate;
     @Min(value=0,message="Mileage cannot be negative")
     private double mileage;
+
+    @Column(nullable = false)
+    private boolean deleted=false;
 }
